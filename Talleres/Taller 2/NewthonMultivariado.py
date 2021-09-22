@@ -56,9 +56,9 @@ def newtonMultivariado(f, x, tol):
             jac[:, i] = (f1 - f0) / h
         return jac, f0
     print()
-    for i in range(15):
+    for i in range(100):
         jac, f0 = jacobiano(f, x)
-        #Resolver el sistema lineal nxn que esta dado por la matriz Jacobiana multiplicado por el vector y e igualado por menos el vector F
+        #Resolver el sistema que esta dado por la matriz Jacobiana multiplicado por el vector y e igualado por menos el vector F
         y = gauss(jac, -f0, tol)
         print("Iteracion", i, "\t[x,y]:", x, "\t\tMagnitud: ",math.sqrt(np.dot(y, y)))
         #Reescribir la aproximacion inicial
@@ -77,8 +77,8 @@ def f(x):
     return f
 #Aproximacion inicial
 x = np.array([1.0, 1.0])
-tol=10e-7
+tol=10E-8
 x = newtonMultivariado(f,x,tol)
-print('\nLa interseccion entre la circunferencia x^2+y^2=1 y la recta x=y utilizando el metodo de Newton Multivariado y la aproximacion incial (1,1) es:')
+print('\nLa interseccion del problema dado utilizando el metodo de Newton Multivariado y la aproximacion incial (1,1) es:')
 print(x)
 
